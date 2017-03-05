@@ -1,0 +1,7 @@
+---
+- name: Configure ELK server
+  hosts: elk-server
+  become: yes
+  roles:
+    # - ansiblesetup
+    - oracle-java8
