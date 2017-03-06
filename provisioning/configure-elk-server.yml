@@ -3,5 +3,5 @@
   hosts: elk-server
   become: yes
   roles:
-    # - ansiblesetup
-    - oracle-java8
+    # - oracle-java8
+    - elasticsearch

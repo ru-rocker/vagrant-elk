@@ -68,8 +68,10 @@ Vagrant.configure("2") do |config|
   # ansible needs python2
   # so we provision here to install python2.
   config.vm.provision "shell", inline: <<-SHELL
+    # add-apt-repository -y ppa:webupd8team/java
     apt-get update
     apt-get install -y python-minimal
+    # apt-get -y install oracle-java8-installer
   SHELL
 
   config.vm.define "elk-server"
