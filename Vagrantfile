@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
   # set time out in seconds
-  config.vm.boot_timeout = 450
+  config.vm.boot_timeout = 600
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Customize the amount of memory on the VM:
-    vb.memory = "2048"
+    vb.memory = "4096"
     # vb.gui = true
   end
   #
