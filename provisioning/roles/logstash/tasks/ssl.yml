@@ -1,0 +1,10 @@
+---
+- name: create certs directory
+  file:
+    path: /etc/pki/tls/certs
+    state: directory
+
+- name: create private directory
+  file:
+    path: /etc/pki/tls/private
+    state: directory

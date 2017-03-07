@@ -4,7 +4,7 @@
     url: 'https://packages.elastic.co/GPG-KEY-elasticsearch'
   become: yes
 
-- name: Add specified repository into sources list using specified filename.
+- name: Add elasticsearch repository into sources list using specified filename.
   apt_repository:
     repo: deb http://packages.elastic.co/elasticsearch/2.x/debian stable main
     state: present

@@ -33,5 +33,6 @@ Temporary Items
 
 ### Vagrant ###
 .vagrant/
+*.log
 
 # End of https://www.gitignore.io/api/osx,vagrant,ansible

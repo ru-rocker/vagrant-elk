@@ -1,0 +1,16 @@
+---
+- name: Add Logstash to source list
+  apt_repository:
+    repo: deb http://packages.elastic.co/logstash/2.3/debian stable main
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Install logstash
+  apt:
+    name: logstash
+    force: true
+    state: latest
+  become: yes
+
+- include: ssl.yml
