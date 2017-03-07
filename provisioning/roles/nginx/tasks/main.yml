@@ -1,0 +1,33 @@
+---
+- name: install nginx
+  apt:
+    name: nginx
+    state: latest
+    force: yes
+  become: true
+
+- name: Make sure we can use htpasswd module
+  apt:
+    pkg: python-passlib
+    state: installed
+
+- name: add kibana admin user
+  htpasswd:
+    name: admin
+    password: admin
+    path: /etc/nginx/htpasswd.users
+  become: true
+
+- name: copy nginx site default default
+  copy:
+    src: default
+    dest: /etc/nginx/sites-available/default
+    force: true
+  become: true
+  notify: restart nginx
+
+- name: set ufw for nginx
+  ufw:
+    rule: allow
+    state: enabled
+    port: http

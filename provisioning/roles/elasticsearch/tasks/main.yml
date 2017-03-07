@@ -2,6 +2,7 @@
 - name: Import the Elasticsearch public GPG key into apt
   apt_key:
     url: 'https://packages.elastic.co/GPG-KEY-elasticsearch'
+  become: yes
 
 - name: Add specified repository into sources list using specified filename.
   apt_repository:
@@ -9,9 +10,26 @@
     state: present
     filename: elasticsearch-2.x.list
     update_cache: yes
+  become: yes
 
 - name: Install Elasticsearch
   apt:
     name: elasticsearch
     force: true
     state: latest
+  become: yes
+
+- name: copy elasticsearch.yml
+  copy:
+    src: elasticsearch.yml
+    dest: /etc/elasticsearch/
+    force: yes
+  notify:
+    - restart elasticsearch
+  become: yes
+
+- name: Enable elastic on boot
+  service:
+    name: elasticsearch
+    enabled: yes
+  become: yes
