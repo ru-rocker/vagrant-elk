@@ -14,3 +14,31 @@
   become: yes
 
 - include: ssl.yml
+
+- name: copy filebeat configuration
+  copy:
+    src: 02-beats-input.conf
+    dest: /etc/logstash/conf.d/
+    force: true
+  become: yes
+
+- name: configure syslog filter
+  copy:
+    src: 10-syslog-filter.conf
+    dest: /etc/logstash/conf.d/
+    force: true
+  become: yes
+
+- name: configure elastic output
+  copy:
+    src: 30-elasticsearch-output.conf
+    dest: /etc/logstash/conf.d/
+    force: true
+  become: yes
+
+- name: Enable logstash on boot
+  service:
+    name: logstash
+    enabled: yes
+  become: yes
+  notify: restart logstash

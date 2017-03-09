@@ -3,8 +3,23 @@
   file:
     path: /etc/pki/tls/certs
     state: directory
+  become: yes
 
 - name: create private directory
   file:
     path: /etc/pki/tls/private
     state: directory
+  become: yes
+
+- name: copy openssl conf
+  copy:
+    src: openssl.cnf
+    dest: /etc/ssl/
+    force: yes
+  become: yes
+
+- name: Generate public and private key
+  shell: openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+  args:
+    chdir: /etc/pki/tls
+  become: yes
