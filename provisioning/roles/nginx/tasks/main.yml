@@ -25,9 +25,3 @@
     force: true
   become: true
   notify: restart nginx
-
-- name: set ufw for nginx
-  ufw:
-    rule: allow
-    state: enabled
-    port: http
