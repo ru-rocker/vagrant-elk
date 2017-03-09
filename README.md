@@ -5,3 +5,6 @@ Because this vagrant setting uses ubuntu/xenial64 box, the first step is to inst
 See SHELL provisioning under Vagrantfile.
 
 The rest provisioning use ansible
+
+### Reference
+https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-16-04

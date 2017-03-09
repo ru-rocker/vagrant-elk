@@ -8,3 +8,4 @@
     - kibana
     - nginx
     - logstash
+    - beats

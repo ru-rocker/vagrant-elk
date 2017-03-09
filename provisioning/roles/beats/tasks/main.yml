@@ -1,0 +1,21 @@
+---
+- name: Add filebeat to source list
+  apt_repository:
+    repo: deb https://packages.elastic.co/beats/apt stable main
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Install Filebeat
+  apt:
+    name: filebeat
+    force: true
+    state: latest
+  become: yes
+
+- name: Enable kibana on boot
+  service:
+    name: filebeat
+    enabled: yes
+  become: yes
+  notify: restart filebeat
