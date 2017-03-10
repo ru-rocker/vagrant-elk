@@ -10,7 +10,7 @@
   apt:
     name: logstash
     force: true
-    state: latest
+    state: present
   become: yes
 
 - include: ssl.yml

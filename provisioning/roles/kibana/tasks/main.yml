@@ -10,7 +10,7 @@
   apt:
     name: kibana
     force: true
-    state: latest
+    state: present
   become: yes
 
 - name: copy kibana.yml

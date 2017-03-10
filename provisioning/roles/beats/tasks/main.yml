@@ -10,7 +10,7 @@
   apt:
     name: filebeat
     force: true
-    state: latest
+    state: present
   become: yes
 
 - name: Enable kibana on boot
