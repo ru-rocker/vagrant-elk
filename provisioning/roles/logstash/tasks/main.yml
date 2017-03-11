@@ -13,11 +13,18 @@
     state: present
   become: yes
 
-- include: ssl.yml
+# - include: ssl.yml
 
 - name: copy filebeat configuration
   copy:
     src: 02-beats-input.conf
+    dest: /etc/logstash/conf.d/
+    force: true
+  become: yes
+
+- name: configure gokit filter
+  copy:
+    src: 09-gokit-filter.conf
     dest: /etc/logstash/conf.d/
     force: true
   become: yes
