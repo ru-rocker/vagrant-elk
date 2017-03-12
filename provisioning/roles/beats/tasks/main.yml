@@ -13,7 +13,7 @@
     state: present
   become: yes
 
-- name: Enable kibana on boot
+- name: Enable filebeat on boot
   service:
     name: filebeat
     enabled: yes
